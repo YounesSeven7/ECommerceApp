@@ -54,6 +54,20 @@ class CartRepository @Inject constructor(
         batch.commit()
     }
 
+    fun deleteListOfProductsFromCart(cartProductsList: List<CartProduct>) {
+        db.runBatch {
+            for (product in cartProductsList) deleteProductFromCart(product.product.id)
+        }
+    }
+
+
+    fun deleteProductFromCart(productId: Int) {
+        getCartProductDocument(productId).delete()
+    }
+
+
+
+
 
 
 }

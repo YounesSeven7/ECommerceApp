@@ -2,7 +2,7 @@ package com.example.ecommerce_app.feature_auth.presentation.launch.resetPassword
 
 
 import androidx.lifecycle.ViewModel
-import com.example.ecommerce_app.core.domain.use_case.fields.EmailFieldUseCase
+import com.example.ecommerce_app.core.domain.use_case.fields.EmailFieldValidationUseCase
 import com.example.ecommerce_app.core.domain.util.Field
 import com.example.ecommerce_app.core.domain.util.Resource
 import com.example.ecommerce_app.feature_auth.domain.use_case.password_reset.ResetPasswordUseCase
@@ -14,7 +14,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ResetPasswordViewModel @Inject constructor(
-    private val emailFieldUseCase: EmailFieldUseCase,
+    private val emailFieldValidationUseCase: EmailFieldValidationUseCase,
     private val resetPasswordUseCase: ResetPasswordUseCase
 ): ViewModel() {
 
@@ -28,7 +28,7 @@ class ResetPasswordViewModel @Inject constructor(
         _resetPasswordState.emit(Resource.Loading())
         delay(500)
 
-        val emailField = emailFieldUseCase(email)
+        val emailField = emailFieldValidationUseCase(email)
 
         if (emailField.validation) {
             val result = resetPasswordUseCase(email)

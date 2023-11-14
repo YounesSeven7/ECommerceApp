@@ -1,9 +1,13 @@
 package com.example.ecommerce_app.feature_shopping.presentation.shopping.cart.cart
 
+import android.app.Application
 import androidx.lifecycle.ViewModel
+import com.example.ecommerce_app.R
+import com.example.ecommerce_app.core.domain.use_case.CheckInternetConnectionUseCase
 import com.example.ecommerce_app.core.domain.util.Resource
 import com.example.ecommerce_app.feature_shopping.data.model.CartProduct
 import com.example.ecommerce_app.feature_shopping.data.model.Payment
+import com.example.ecommerce_app.feature_shopping.domain.use_case.cart.DeleteProductFromCartUseCase
 import com.example.ecommerce_app.feature_shopping.domain.use_case.cart.ListenToCartProductsUseCase
 import com.example.ecommerce_app.feature_shopping.domain.use_case.cart.UpdateCartProductQuantityUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -24,7 +28,10 @@ typealias price = Int
 @HiltViewModel
 class CartViewModel @Inject constructor(
     private val listenToCartProductsUseCase: ListenToCartProductsUseCase,
-    private val updateCartProductQuantityUseCase: UpdateCartProductQuantityUseCase
+    private val updateCartProductQuantityUseCase: UpdateCartProductQuantityUseCase,
+    private val deleteProductFromCartUseCase: DeleteProductFromCartUseCase,
+    private val checkInternetConnectionUseCase: CheckInternetConnectionUseCase,
+    private val context: Application
 ): ViewModel() {
 
     private val cartProductsNewQuantityToUpdate = mutableMapOf<CartProduct, newQuantity>()
@@ -72,6 +79,12 @@ class CartViewModel @Inject constructor(
 
     fun checkout(): Flow<Resource<Payment>> = flow {
         emit(Resource.Loading())
+        val connection = checkInternetConnectionUseCase()
+        if (!connection) {
+            delay(1000)
+            emit(Resource.Error(context.getString(R.string.you_need_internet_connection_to_checkout)))
+            return@flow
+        }
         val result = when(val cartProductsState = getCartProductsState.value) {
             is Resource.Success -> Resource.Success(Payment(cartProductsState.data, currentPrice.value))
             else -> Resource.Error("Something went wrong")
@@ -81,8 +94,11 @@ class CartViewModel @Inject constructor(
     }
 
 
-    fun deleteProducts(cartProduct: CartProduct) {
-        // todo delete item
+    suspend fun deleteProducts(cartProduct: CartProduct) {
+        val result = deleteProductFromCartUseCase(cartProduct.product.id)
+        cartProductsNewQuantityToUpdate.remove(cartProduct)
+        _doWeHaveChanges.value = cartProductsNewQuantityToUpdate.isNotEmpty()
+        _deleteItemState.emit(result)
     }
 
     fun increaseOrDecreaseQuantity(cartProduct: CartProduct, increase: Boolean) {

@@ -1,22 +1,16 @@
 package com.example.ecommerce_app.feature_auth.presentation.utile
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.content.Intent
-import android.view.View
 import android.widget.EditText
-import android.widget.Toast
 import androidx.fragment.app.FragmentActivity
 import androidx.navigation.NavController
-import androidx.navigation.fragment.findNavController
 import com.example.ecommerce_app.R
 import com.example.ecommerce_app.core.domain.util.Constant
 import com.example.ecommerce_app.feature_shopping.presentation.shopping.ShoppingActivity
-import com.google.android.material.snackbar.Snackbar
 
 
-
-fun setErrorMessageInEditText(editText: EditText, message: String) {
+fun setErrorMessageOnEditText(editText: EditText, message: String) {
     editText.apply {
         requestFocus()
         error = message

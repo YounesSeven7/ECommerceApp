@@ -9,6 +9,7 @@ fun showAlongSnackbar(requireView: View, message: String) {
     Snackbar.make(requireView, message, Snackbar.LENGTH_LONG).show()
 }
 
+
 fun showAShortToast(context: Context, message: String) {
     Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
 }

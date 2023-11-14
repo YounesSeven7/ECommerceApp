@@ -39,7 +39,14 @@
         android:id="@+id/profileFragment"
         android:name="com.example.ecommerce_app.feature_shopping.presentation.shopping.profile.profile.ProfileFragment"
         android:label="ProfileFragment"
-        tools:layout="@layout/fragment_profile"/>
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/action_profileFragment_to_addressFragment"
+            app:destination="@id/addressFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_billingFragment"
+            app:destination="@id/billingFragment" />
+    </fragment>
     <fragment
         android:id="@+id/detailsFragment"
         android:name="com.example.ecommerce_app.feature_shopping.presentation.shopping.home.details.DetailsFragment"
@@ -56,6 +63,22 @@
         tools:layout="@layout/fragment_billing">
         <argument
             android:name="payment"
-            app:argType="com.example.ecommerce_app.feature_shopping.data.model.Payment" />
+            app:argType="com.example.ecommerce_app.feature_shopping.data.model.Payment"
+            app:nullable="true"
+            android:defaultValue="@null"/>
+        <action
+            android:id="@+id/action_billingFragment_to_addressFragment"
+            app:destination="@id/addressFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addressFragment"
+        android:name="com.example.ecommerce_app.feature_shopping.presentation.shopping.profile.address.AddressFragment"
+        android:label="AddressFragment"
+        tools:layout="@layout/fragment_address">
+        <argument
+            android:name="address"
+            app:argType="com.example.ecommerce_app.feature_shopping.data.model.Address"
+            app:nullable="true"
+            android:defaultValue="@null"/>
     </fragment>
 </navigation>

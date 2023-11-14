@@ -12,7 +12,7 @@ import com.example.ecommerce_app.R
 import com.example.ecommerce_app.core.domain.util.Resource
 import com.example.ecommerce_app.databinding.FragmentLoginBinding
 import com.example.ecommerce_app.feature_auth.domain.util.LoginFields
-import com.example.ecommerce_app.feature_auth.presentation.utile.setErrorMessageInEditText
+import com.example.ecommerce_app.feature_auth.presentation.utile.setErrorMessageOnEditText
 import com.example.ecommerce_app.core.presentation.showAlongSnackbar
 import com.example.ecommerce_app.feature_auth.presentation.utile.startOrBAckToRegisterScreen
 import com.example.ecommerce_app.feature_auth.presentation.utile.startShoppingActivity
@@ -83,10 +83,10 @@ class LoginFragment: Fragment() {
         binding.apply {
             btnLogin.revertAnimation()
             if (!loginFields.email.validation)
-                setErrorMessageInEditText(edEmailLogin , loginFields.email.message)
+                setErrorMessageOnEditText(edEmailLogin , loginFields.email.message)
 
             else
-                setErrorMessageInEditText(edPasswordLogin, loginFields.password.message)
+                setErrorMessageOnEditText(edPasswordLogin, loginFields.password.message)
         }
     }
 

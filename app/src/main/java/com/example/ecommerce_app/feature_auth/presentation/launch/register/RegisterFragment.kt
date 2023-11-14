@@ -1,7 +1,6 @@
 package com.example.ecommerce_app.feature_auth.presentation.launch.register
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +12,7 @@ import com.example.ecommerce_app.core.data.model.User
 import com.example.ecommerce_app.core.domain.util.Resource
 import com.example.ecommerce_app.databinding.FragmentRegisterBinding
 import com.example.ecommerce_app.feature_auth.domain.util.RegisterFields
-import com.example.ecommerce_app.feature_auth.presentation.utile.setErrorMessageInEditText
+import com.example.ecommerce_app.feature_auth.presentation.utile.setErrorMessageOnEditText
 import com.example.ecommerce_app.core.presentation.showAlongSnackbar
 import com.example.ecommerce_app.feature_auth.presentation.utile.startOrBackToLoginScreen
 import dagger.hilt.android.AndroidEntryPoint
@@ -78,16 +77,16 @@ class RegisterFragment: Fragment() {
         binding.apply {
             btnRegister.revertAnimation()
             if (!registerFields.firstName.validation)
-                setErrorMessageInEditText(edFirstName, registerFields.firstName.message)
+                setErrorMessageOnEditText(edFirstName, registerFields.firstName.message)
 
             else if (!registerFields.lastName.validation)
-                setErrorMessageInEditText(edLastName, registerFields.lastName.message)
+                setErrorMessageOnEditText(edLastName, registerFields.lastName.message)
 
             else if (!registerFields.email.validation)
-                setErrorMessageInEditText(edEmail, registerFields.email.message)
+                setErrorMessageOnEditText(edEmail, registerFields.email.message)
 
             else
-                setErrorMessageInEditText(edPassword, registerFields.password.message)
+                setErrorMessageOnEditText(edPassword, registerFields.password.message)
         }
 
     }

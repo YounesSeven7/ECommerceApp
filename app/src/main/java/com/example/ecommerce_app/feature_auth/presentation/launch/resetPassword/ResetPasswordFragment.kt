@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -13,7 +12,7 @@ import com.example.ecommerce_app.R
 import com.example.ecommerce_app.core.domain.util.Field
 import com.example.ecommerce_app.databinding.FragmentResetPasswordBinding
 import com.example.ecommerce_app.core.domain.util.Resource
-import com.example.ecommerce_app.feature_auth.presentation.utile.setErrorMessageInEditText
+import com.example.ecommerce_app.feature_auth.presentation.utile.setErrorMessageOnEditText
 import com.example.ecommerce_app.core.presentation.showAShortToast
 import com.example.ecommerce_app.core.presentation.showAlongSnackbar
 import dagger.hilt.android.AndroidEntryPoint
@@ -57,7 +56,7 @@ class ResetPasswordFragment: Fragment() {
 
     private fun handleEmailFieldValidation(emailField: Field) {
         binding.btnResetPassword.revertAnimation()
-        setErrorMessageInEditText(binding.edEmailReset, emailField.message)
+        setErrorMessageOnEditText(binding.edEmailReset, emailField.message)
     }
 
     private fun handleResetPasswordState(resetPasswordState: Resource<Unit>) {

@@ -19,13 +19,16 @@ class UserRepository @Inject constructor(
 
     fun addUser(user: User) = getUserDocument(user.email).set(user)
 
+    suspend fun getUser() = getUserDocument(auth.currentUser!!.email!!)
+        .get().await().toObject(User::class.java)!!
+
     suspend fun getUser(email: String) = getUserDocument(email)
         .get().await().toObject(User::class.java)
 
-    suspend fun isUserExist(email: String): Boolean {
-        val user = getUser(email)
-        return user != null
-    }
+    suspend fun isUserExist(email: String) = getUserDocument(email)
+        .get().await().exists()
+
+
 
 
 }

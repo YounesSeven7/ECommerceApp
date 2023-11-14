@@ -15,14 +15,17 @@ import com.example.ecommerce_app.R
 import com.example.ecommerce_app.core.domain.util.Resource
 import com.example.ecommerce_app.core.presentation.hideThisView
 import com.example.ecommerce_app.core.presentation.showAShortToast
-import com.example.ecommerce_app.core.presentation.showAlongSnackbar
 import com.example.ecommerce_app.core.presentation.showThisView
 import com.example.ecommerce_app.databinding.FragmentCartBinding
 import com.example.ecommerce_app.feature_shopping.data.model.CartProduct
 import com.example.ecommerce_app.feature_shopping.data.model.Payment
 import com.example.ecommerce_app.feature_shopping.presentation.adapters.recyclerView.CartProductAdapter
+import com.example.ecommerce_app.feature_shopping.presentation.hideBottomNavigation
+import com.example.ecommerce_app.feature_shopping.presentation.shopping.ShoppingActivity
+import com.example.ecommerce_app.feature_shopping.presentation.showAlongSnackbarAboveBottomNav
 import com.example.ecommerce_app.feature_shopping.presentation.showBottomNavigation
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -45,12 +48,12 @@ class CartFragment: Fragment() {
     }
 
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply { makeScreenReady() }
 
         lifecycleScope.apply {
+
             launch { viewModel.getCartProductsState.collect{ handleGetCartProductsState(it) } }
 
             launch { viewModel.listenToCartProductState() }
@@ -90,26 +93,36 @@ class CartFragment: Fragment() {
                 lifecycleScope.launch { viewModel.updateProductsQuantity() }
             } else {
                 lifecycleScope.launch {
-                    viewModel.checkout().collect{ handleCheckOut(it) }
+                    viewModel.checkout().collect{ handleCheckOutState(it) }
                 }
             }
         }
     }
 
-    private fun handleCheckOut(checkOutState: Resource<Payment>) {
+    private fun handleCheckOutState(checkOutState: Resource<Payment>) {
         when(checkOutState) {
             is Resource.Loading -> binding.btnCheckoutOrUpdate.startAnimation()
             is Resource.Success -> handleSuccessCheckOutState(checkOutState.data)
-            is Resource.Error -> Unit
+            is Resource.Error -> handleErrorCheckOutState(checkOutState.message)
             is Resource.Unspecified -> Unit
         }
     }
 
+
     private fun handleSuccessCheckOutState(payment: Payment) {
-        val code = CartFragmentDirections.actionCartFragmentToBillingFragment(payment)
-        findNavController().navigate(code)
-        binding.btnCheckoutOrUpdate.revertAnimation()
+        binding.btnCheckoutOrUpdate.revertAnimation {
+            val code = CartFragmentDirections.actionCartFragmentToBillingFragment(payment)
+            findNavController().navigate(code)
+            hideBottomNavigation()
+        }
     }
+
+    private fun handleErrorCheckOutState(message: String) {
+        binding.btnCheckoutOrUpdate.revertAnimation {
+            showAlongSnackbarAboveBottomNav(message)
+        }
+    }
+
 
     private val increaseOrDecreaseQuantity = { cartProduct: CartProduct, increase: Boolean ->
         viewModel.increaseOrDecreaseQuantity(cartProduct, increase)
@@ -122,7 +135,7 @@ class CartFragment: Fragment() {
     private fun handleGetCartProductsState(getCartProductsState: Resource<List<CartProduct>>) {
         when(getCartProductsState) {
             is Resource.Loading -> handleLoadingGetCartProductsTate()
-            is Resource.Success -> handleSuccessGetCartProductsState(getCartProductsState)
+            is Resource.Success -> handleSuccessGetCartProductsState(getCartProductsState.data)
             is Resource.Error -> handleErrorGetCartProductsState(getCartProductsState)
             is Resource.Unspecified -> Unit
         }
@@ -133,18 +146,26 @@ class CartFragment: Fragment() {
         binding.btnCheckoutOrUpdate.startAnimation()
     }
 
-    private fun handleSuccessGetCartProductsState(cartProductsState: Resource.Success<List<CartProduct>>) {
-        val list = cartProductsState.data
-        binding.layoutCarEmpty.visibility = if (list.isEmpty()) View.VISIBLE else View.GONE
-        binding.totalBoxContainer.visibility = if (list.isEmpty()) View.GONE else View.VISIBLE
-        binding.progressbarCart.visibility = View.GONE
-        binding.btnCheckoutOrUpdate.revertAnimation()
-        cartProductAdapter.diff.submitList(list)
+    private fun handleSuccessGetCartProductsState(cartProductsList: List<CartProduct>) {
+        binding.apply {
+            if (cartProductsList.isEmpty()) {
+                showThisView(layoutCarEmpty)
+                hideThisView(totalBoxContainer)
+                hideThisView(btnCheckoutOrUpdate)
+            } else {
+                hideThisView(binding.layoutCarEmpty)
+                showThisView(totalBoxContainer)
+                showThisView(btnCheckoutOrUpdate)
+            }
+            hideThisView(progressbarCart)
+            btnCheckoutOrUpdate.revertAnimation()
+            cartProductAdapter.diff.submitList(cartProductsList)
+        }
     }
 
     private fun handleErrorGetCartProductsState(cartProductsState: Resource.Error<List<CartProduct>>) {
         hideThisView(binding.progressbarCart)
-        showAlongSnackbar(requireView(), cartProductsState.message)
+        showAlongSnackbarAboveBottomNav(cartProductsState.message)
     }
 
 
@@ -160,7 +181,7 @@ class CartFragment: Fragment() {
 
     private fun handleDeleteItemState(deleteState: Resource<Unit>) {
         when (deleteState) {
-            is Resource.Error -> showAlongSnackbar(requireView(), deleteState.message)
+            is Resource.Error -> showAlongSnackbarAboveBottomNav(deleteState.message)
             else -> Unit
         }
     }
@@ -195,7 +216,7 @@ class CartFragment: Fragment() {
 
     private fun handleErrorUpdateCartProductsState(message: String) {
         binding.btnCheckoutOrUpdate.revertAnimation()
-        showAlongSnackbar(requireView(), message)
+        showAlongSnackbarAboveBottomNav(message)
     }
 
 

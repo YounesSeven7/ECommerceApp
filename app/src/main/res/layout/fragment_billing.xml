@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragments.shopping.BillingFragment"
     android:fillViewport="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -111,24 +110,23 @@
         />
 
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_adresses"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/guideline1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_shopping_addresses"
-        android:layout_marginTop="10dp" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_adresses"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/guideline1"
+            app:layout_constraintTop_toBottomOf="@+id/progressbar_addresses" />
 
         <ProgressBar
             android:id="@+id/progressbar_addresses"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="@id/guideline1"
-            app:layout_constraintEnd_toEndOf="@id/guideline2"
-            app:layout_constraintTop_toBottomOf="@id/tv_shopping_addresses"
             android:indeterminateTint="@color/g_hint"
-            android:visibility="gone"/>
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="@id/guideline2"
+            app:layout_constraintStart_toStartOf="@id/guideline1"
+            app:layout_constraintTop_toBottomOf="@id/tv_shopping_addresses" />
 
         <View
             android:id="@+id/line2"
@@ -168,48 +166,46 @@
             android:id="@+id/linear"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="@id/guideline1"
+            android:visibility="visible"
             app:layout_constraintEnd_toEndOf="@id/guideline2"
-            app:layout_constraintTop_toBottomOf="@id/line3"
-            android:visibility="invisible"
-            >
+            app:layout_constraintStart_toStartOf="@id/guideline1"
+            app:layout_constraintTop_toBottomOf="@id/line3">
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/g_total"
-                android:textSize="@dimen/_16ssp"
-                android:textColor="@color/black"
-                android:fontFamily="@font/sf_pro_display"
+                android:layout_gravity="start|center_vertical"
                 android:layout_marginStart="10dp"
-                android:layout_weight="1"
                 android:layout_marginTop="@dimen/_15sdp"
                 android:layout_marginBottom="@dimen/_15sdp"
-                android:layout_gravity="start|center_vertical"
+                android:layout_weight="1"
+                android:fontFamily="@font/sf_pro_display"
+                android:text="@string/g_total"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16ssp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tv_totalprice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:textSize="@dimen/_16ssp"
-                android:textColor="@color/black"
-                android:fontFamily="@font/sf_pro_display"
-                android:layout_marginTop="@dimen/_15sdp"
-                android:layout_marginBottom="@dimen/_15sdp"
                 android:layout_gravity="end|center_vertical"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="@dimen/_15sdp"
+                android:fontFamily="@font/sf_pro_display"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16ssp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_place_older"
+        <com.github.leandroborgesferreira.loadingbutton.customViews.CircularProgressButton
+            android:id="@+id/btn_place_order"
             android:layout_width="0dp"
             android:layout_height="@dimen/_40sdp"
             android:layout_marginBottom="20dp"
@@ -219,35 +215,23 @@
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="@dimen/_12sdp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/linear"
             app:layout_constraintEnd_toEndOf="@id/guideline2"
-            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="@id/guideline1"
             />
-
-        <ProgressBar
-            android:id="@+id/progressbar_placeOrder"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="@id/btn_place_older"
-            app:layout_constraintEnd_toEndOf="@id/btn_place_older"
-            app:layout_constraintTop_toBottomOf="@id/btn_place_older"
-            app:layout_constraintTop_toTopOf="@id/btn_place_older"
-            android:indeterminateTint="@color/g_hint"
-            android:visibility="gone"/>
 
         <TextView
             android:id="@+id/tv_select_address_error"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/_10ssp"
-            android:text="@string/g_select_address_error"
-            app:layout_constraintStart_toEndOf="@id/tv_shopping_addresses"
-            app:layout_constraintTop_toTopOf="@id/tv_shopping_addresses"
-            app:layout_constraintBottom_toBottomOf="@id/tv_shopping_addresses"
             android:layout_marginStart="10dp"
+            android:text="@string/g_select_address_error"
             android:textColor="@color/g_red"
-            android:visibility="gone"/>
+            android:textSize="@dimen/_10ssp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/tv_shopping_addresses"
+            app:layout_constraintStart_toEndOf="@id/tv_shopping_addresses"
+            app:layout_constraintTop_toTopOf="@id/tv_shopping_addresses" />
 
 
 

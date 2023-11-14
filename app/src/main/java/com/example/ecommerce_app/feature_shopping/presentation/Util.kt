@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.example.ecommerce_app.R
+import com.example.ecommerce_app.core.presentation.showAlongSnackbar
 import com.example.ecommerce_app.feature_shopping.presentation.shopping.ShoppingActivity
 
 fun makePriceWithFormat(context: Context, price: Int): String {
@@ -19,4 +20,10 @@ fun Fragment.showBottomNavigation() {
 
 fun Fragment.hideBottomNavigation() {
     getBottomNavigationView().visibility = View.GONE
+}
+
+fun Fragment.getCoordinatorView() = (activity as ShoppingActivity).binding.snackBarCoordinator
+
+fun Fragment.showAlongSnackbarAboveBottomNav(message: String) {
+    showAlongSnackbar(getCoordinatorView(), message)
 }

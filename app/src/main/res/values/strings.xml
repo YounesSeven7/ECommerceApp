@@ -28,7 +28,10 @@
     <string name="email_cant_be_empty">Email can\'t be empty</string>
     <string name="password_cant_be_empty">password can\'t be empty</string>
     <string name="password_at_least_six">password should have 6</string>
+    <string name="empty_field">This field can\'t be empty</string>
+
     <string name="valid_email">check your email</string>
+    <string name="invalid_phone_format">check you phone number format</string>
     <string name="signed_up_successfully">you have created new account, verify your email and login now</string>
     <string name="g_home">Home</string>
     <string name="g_search">search</string>
@@ -130,13 +133,19 @@
     <string name="help_text" translatable="false">Got a question? We\'re here to answer!</string>
     <string name="verify_your_email">You need to verify your email first.</string>
     <string name="user_not_exist">This user is not exist check your email</string>
-    <string name="add_product_successfully">Add product successfully</string>
-    <string name="update_product_successfully">Update successfully</string>
+    <string name="add_successfully">Add successfully</string>
+    <string name="update_successfully">Update successfully</string>
+    <string name="delete_successfully">Delete successfully</string>
+    <string name="add_order_successfully">Add order successfully</string>
     <string name="add_to_cart">Add product</string>
+    <string name="add">Add</string>
     <string name="increase">Increase</string>
     <string name="product_already_exists">This product Already in cart do you want increase quantity</string>
     <string name="save_changes_no_internet">We will save changes in the cloud when the internet go back</string>
-
+    <string name="you_need_internet_connection_to_checkout">you need internet connection for checkout</string>
+    <string name="you_need_internet_connection_to_place_order">you need internet connection for place order</string>
+    <string name="There_is_no_changes">There is no changes to update</string>
+    <string name="feature_not_available">This feature will come soon</string>
     <!-- format -->
 
     <string name="price_format" translatable="false">$ d</string>

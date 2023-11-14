@@ -207,7 +207,7 @@
                     app:tint="@color/white" />
 
                 <TextView
-                    android:id="@+id/tv_billing"
+                    android:id="@+id/tv_billingAndAddresses"
                     style="@style/MediumTextViewThin"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"

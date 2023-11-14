@@ -14,7 +14,7 @@ class AddProductToCartUseCase @Inject constructor(
     operator fun invoke(product: Product): Resource<String> {
         return try {
             cartRepository.addProductToCard(product)
-            Resource.Success(context.getString(R.string.add_product_successfully))
+            Resource.Success(context.getString(R.string.add_successfully))
         } catch (e: Exception) {
             Resource.Error(e.message.toString())
         }

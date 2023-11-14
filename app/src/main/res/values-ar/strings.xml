@@ -28,8 +28,10 @@
     <string name="last_name_cant_be_empty">يجب ملئ الاسم الثاني</string>
     <string name="email_cant_be_empty">يجب ملئ البريد الالكتروني</string>
     <string name="password_cant_be_empty">يجب ملئ كلمة المرور</string>
+    <string name="empty_field">الحقل فارغ</string>
     <string name="password_at_least_six">كلمة المرور يجب ان تجتوي على الاقل 6 احرف</string>
     <string name="valid_email">تأكد من البريد الالكتروني</string>
+    <string name="invalid_phone_format">تأكد من كلمة السر الخاصة بك</string>
     <string name="signed_up_successfully">تم انشاء حساب جديد ، سجل الدخول</string>
     <string name="g_home">الرئيسة</string>
     <string name="g_search">ابحث</string>
@@ -128,10 +130,17 @@
     <string name="verify_your_email">تحقق من بريدك الألكتروني</string>
     <string name="user_not_exist">"لا يوجد مستخدم بهذا البريد الإلكتروني "</string>
     <string name="no_product_available">لا يوجد أي منتج متاح</string>
-    <string name="add_product_successfully">تمت الإضافة إلى البطاقة</string>
-    <string name="update_product_successfully">تم تحديث بنجاح</string>
+    <string name="add_successfully">تمت الإضافة إلى البطاقة</string>
+    <string name="delete_successfully"> تم الحذف بنجاح </string>
+    <string name="update_successfully">تم تحديث بنجاح</string>
+    <string name="add_order_successfully">تم إضافة الطلب بنجاح</string>
     <string name="add_to_cart">إضافة إلى العربة</string>
+    <string name="add">إضافة</string>
     <string name="increase">إضافة</string>
     <string name="product_already_exists">هذا المنتج موجود بلفعل في العربة هل تريد أن تزيد الكمية</string>
     <string name="save_changes_no_internet">سوف نحفض التغيرات بعد عودة الإتصال بلإنترنت</string>
+    <string name="you_need_internet_connection_to_checkout">تحتاج إلى إتصال بلإنترنت للدفع</string>
+    <string name="you_need_internet_connection_to_place_order">تحتاج إلى إتصال بلإنترنت للوضع الطلب</string>
+    <string name="There_is_no_changes">لا توجد تغيرات لتحديثها</string>
+    <string name="feature_not_available">هذه الميزة سوف تأتي قريبا</string>
 </resources>

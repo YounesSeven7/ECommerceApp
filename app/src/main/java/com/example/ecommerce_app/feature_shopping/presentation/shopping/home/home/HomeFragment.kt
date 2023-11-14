@@ -11,13 +11,13 @@ import androidx.navigation.fragment.findNavController
 import com.example.ecommerce_app.R
 import com.example.ecommerce_app.core.domain.util.Resource
 import com.example.ecommerce_app.core.presentation.hideThisView
-import com.example.ecommerce_app.core.presentation.showAlongSnackbar
 import com.example.ecommerce_app.core.presentation.showThisView
 import com.example.ecommerce_app.databinding.FragmentHomeBinding
 import com.example.ecommerce_app.feature_shopping.data.model.Category
 import com.example.ecommerce_app.feature_shopping.presentation.adapters.viewPager.CategoryViewPagerAdapter
 import com.example.ecommerce_app.feature_shopping.presentation.shopping.home.category.CategoryFragment
-import com.example.ecommerce_app.feature_shopping.presentation.showBottomNavigation
+import com.example.ecommerce_app.feature_shopping.presentation.showAlongSnackbarAboveBottomNav
+
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -97,7 +97,7 @@ class HomeFragment: Fragment() {
     private fun handleErrorGetAllCategoriesState(errorGetAllCategoriesState: Resource.Error<List<Category>>) {
         hideThisView(binding.progressbarCategories)
         if (!viewModel.doWeHaveCategories) {
-            showAlongSnackbar(requireView(), errorGetAllCategoriesState.message)
+            showAlongSnackbarAboveBottomNav(errorGetAllCategoriesState.message)
         }
     }
 
