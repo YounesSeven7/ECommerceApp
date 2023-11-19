@@ -26,7 +26,6 @@ import com.example.ecommerce_app.feature_shopping.data.model.Order
 import com.example.ecommerce_app.feature_shopping.presentation.adapters.recyclerView.AddressAdapter
 import com.example.ecommerce_app.feature_shopping.presentation.adapters.recyclerView.BillingProductAdapter
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -36,8 +35,7 @@ class BillingFragment : Fragment() {
     private lateinit var binding: FragmentBillingBinding
     private val viewModel by viewModels<BillingViewModel>()
     private val args by navArgs<BillingFragmentArgs>()
-    @Inject
-    lateinit var imageLoader: ImageLoader
+    @Inject lateinit var imageLoader: ImageLoader
     private lateinit var addressAdapter: AddressAdapter
     private lateinit var billingProductAdapter: BillingProductAdapter
 
@@ -59,7 +57,8 @@ class BillingFragment : Fragment() {
 
             launch { viewModel.getAllAddresses() }
 
-            launch { viewModel.currentSelectedAddressPosition.collect { handleErrorTvVisibility(it) } }
+            if (args.payment == null)
+                launch { viewModel.currentSelectedAddressPosition.collect { handleErrorTvVisibility(it) } }
         }
     }
 
@@ -72,14 +71,23 @@ class BillingFragment : Fragment() {
             setupProductRv()
             tvTotalprice.text = "$${args.payment!!.price}"
         } else {
-            hideThisView(rvProducts)
-            hideThisView(tvTotalprice)
-            hideThisView(btnPlaceOrder)
+            hideViews()
         }
     }
 
+    private fun FragmentBillingBinding.hideViews() {
+        hideThisView(rvProducts)
+        hideThisView(linear)
+        hideThisView(btnPlaceOrder)
+        hideThisView(line2)
+        hideThisView(tvSelectAddressError)
+    }
+
     private fun setupAddressRv() {
-        addressAdapter = AddressAdapter { newPos -> viewModel.onChangeAddressPosition(newPos) }
+        addressAdapter = AddressAdapter()
+        if (args.payment != null)
+            addressAdapter.onChangeAddress = { newPos -> viewModel.onChangeAddressPosition(newPos) }
+
         val linearLayoutManager =
             LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
         binding.rvAdresses.apply {

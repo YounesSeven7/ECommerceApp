@@ -6,7 +6,7 @@ import coil.request.ImageRequest
 fun getImageRequest(targetImage: ImageView, url: String): ImageRequest {
     return ImageRequest.Builder(targetImage.context)
         .data(url)
-        .crossfade(true)
+        .crossfade(false)
         .target(targetImage)
         .build()
 }

@@ -1,4 +1,4 @@
-package com.example.ecommerce_app.feature_auth.domain.use_case.login
+package com.example.ecommerce_app.feature_auth.domain.use_case.login.login
 
 import com.example.ecommerce_app.core.domain.use_case.fields.EmailFieldValidationUseCase
 import com.example.ecommerce_app.core.domain.use_case.fields.PasswordFieldUseCase

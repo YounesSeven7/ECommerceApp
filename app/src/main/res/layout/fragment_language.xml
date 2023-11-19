@@ -48,42 +48,41 @@
     </androidx.appcompat.widget.Toolbar>
 
     <LinearLayout
+        android:id="@+id/linear_allLanguages"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/guideline1"
-        app:layout_constraintEnd_toEndOf="@id/guideline2"
-        app:layout_constraintTop_toBottomOf="@id/toolbar_language"
+        android:layout_marginTop="10dp"
         android:orientation="vertical"
-        android:layout_marginTop="10dp">
+        app:layout_constraintEnd_toEndOf="@id/guideline2"
+        app:layout_constraintStart_toStartOf="@id/guideline1"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_language">
 
         <LinearLayout
             android:id="@+id/linear_english"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
             android:background="@drawable/search_box_background"
-            >
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/tv_english"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/g_english"
-            style="@style/BigTextViewThin"
-            android:layout_weight="1"
-            android:layout_marginTop="10dp"
-            android:padding="10dp"
-            />
+            <TextView
+                android:id="@+id/tv_english"
+                style="@style/BigTextViewThin"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:padding="10dp"
+                android:text="@string/g_english" />
 
             <ImageView
                 android:id="@+id/img_english"
                 android:layout_width="@dimen/_20sdp"
                 android:layout_height="@dimen/_20sdp"
-                android:src="@drawable/ic_picked"
                 android:layout_gravity="center"
-                app:tint="@color/g_hint"
+                android:layout_marginEnd="5dp"
+                android:src="@drawable/ic_picked"
                 android:visibility="invisible"
-                android:layout_marginEnd="5dp" />
+                app:tint="@color/g_hint" />
 
         </LinearLayout>
 
@@ -91,31 +90,30 @@
             android:id="@+id/linear_arabic"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:background="@drawable/search_box_background"
             android:layout_marginTop="15dp"
-            >
+            android:background="@drawable/search_box_background"
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/tv_arabic"
+                style="@style/BigTextViewThin"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/g_arabic"
-                style="@style/BigTextViewThin"
+                android:layout_marginTop="10dp"
                 android:layout_weight="1"
                 android:gravity="end"
-                android:layout_marginTop="10dp"
-                android:padding="10dp"/>
+                android:padding="10dp"
+                android:text="@string/g_arabic" />
 
             <ImageView
                 android:id="@+id/img_arabic"
                 android:layout_width="@dimen/_20sdp"
                 android:layout_height="@dimen/_20sdp"
-                android:src="@drawable/ic_picked"
                 android:layout_gravity="center"
-                app:tint="@color/g_hint"
+                android:layout_marginEnd="5dp"
+                android:src="@drawable/ic_picked"
                 android:visibility="invisible"
-                android:layout_marginEnd="5dp" />
+                app:tint="@color/g_hint" />
 
         </LinearLayout>
 

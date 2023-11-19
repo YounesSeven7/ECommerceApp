@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.ImageLoader
 import com.example.ecommerce_app.databinding.CartItemBinding
-import com.example.ecommerce_app.databinding.ProductItemBinding
 import com.example.ecommerce_app.feature_shopping.data.model.CartProduct
 import com.example.ecommerce_app.feature_shopping.domain.util.getImageRequest
 

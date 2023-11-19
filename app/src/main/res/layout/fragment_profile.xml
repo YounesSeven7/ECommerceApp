@@ -388,7 +388,7 @@
 
 
             <LinearLayout
-                android:id="@+id/linear_out"
+                android:id="@+id/linear_logout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"

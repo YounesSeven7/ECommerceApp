@@ -11,14 +11,11 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class ShoppingActivity: AppCompatActivity() {
 
-    lateinit var binding: ActivityShoppingBinding
+    val binding: ActivityShoppingBinding by lazy { ActivityShoppingBinding.inflate(layoutInflater) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityShoppingBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         binding.bottomNavigation.setupWithNavController(findNavController(R.id.host_fragment))
-
     }
 }

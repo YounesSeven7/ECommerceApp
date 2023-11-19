@@ -13,6 +13,7 @@ android {
     namespace = "com.example.ecommerce_app"
     compileSdk = 34
 
+
     defaultConfig {
         applicationId = "com.example.ecommerce_app"
         minSdk = 24
@@ -21,6 +22,7 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        resourceConfigurations += setOf("en", "ar")
     }
 
     buildFeatures { viewBinding = true }
@@ -53,6 +55,7 @@ dependencies {
     implementation(libs.firebase.database)
     implementation(libs.firebase.storage)
     implementation(libs.firebase.firestore)
+    implementation(libs.play.services.auth)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)

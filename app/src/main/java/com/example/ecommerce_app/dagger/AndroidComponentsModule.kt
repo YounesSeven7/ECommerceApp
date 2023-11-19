@@ -17,4 +17,9 @@ object AndroidComponentsModule {
     fun provideConnectivityManager(
         context: Application
     ) =  context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+
+
+    @Provides
+    @Singleton
+    fun provideContentResolver(context: Application) = context.contentResolver!!
 }

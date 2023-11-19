@@ -46,6 +46,12 @@
         <action
             android:id="@+id/action_profileFragment_to_billingFragment"
             app:destination="@id/billingFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_allOrdersFragment"
+            app:destination="@id/allOrdersFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailsFragment"
@@ -80,5 +86,31 @@
             app:argType="com.example.ecommerce_app.feature_shopping.data.model.Address"
             app:nullable="true"
             android:defaultValue="@null"/>
+    </fragment>
+    <fragment
+        android:id="@+id/allOrdersFragment"
+        android:name="com.example.ecommerce_app.feature_shopping.presentation.shopping.profile.all_orders.AllOrdersFragment"
+        android:label="AllOrdersFragment"
+        tools:layout="@layout/fragment_all_orders">
+        <action
+            android:id="@+id/action_allOrdersFragment_to_orderDetailsFragment"
+            app:destination="@id/orderDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/orderDetailsFragment"
+        android:name="com.example.ecommerce_app.feature_shopping.presentation.shopping.profile.order_details.OrderDetailsFragment"
+        android:label="OrderDetailsFragment" >
+        <argument
+            android:name="order"
+            app:argType="com.example.ecommerce_app.feature_shopping.data.model.Order" />
+    </fragment>
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.example.ecommerce_app.feature_shopping.presentation.shopping.profile.edit_profile.EditProfileFragment"
+        android:label="EditProfileFragment"
+        tools:layout="@layout/fragment_edit_profile">
+        <argument
+            android:name="user"
+            app:argType="com.example.ecommerce_app.core.data.model.User" />
     </fragment>
 </navigation>

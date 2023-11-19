@@ -1,4 +1,4 @@
-package com.example.ecommerce_app.feature_shopping.data
+package com.example.ecommerce_app.feature_shopping.data.remote_data
 
 import com.example.ecommerce_app.feature_shopping.data.model.Category
 import com.example.ecommerce_app.feature_shopping.data.model.Product

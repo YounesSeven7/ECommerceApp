@@ -15,11 +15,13 @@ class UpdateAddressUseCase @Inject constructor(
 ) {
     operator fun invoke(oldAddress: Address, newAddress: Address): Resource<String> {
          return try {
+             if (oldAddress == newAddress)
+                 return Resource.Error(context.getString(R.string.There_is_no_changes))
+
              addressRepository.updateAddress(oldAddress, newAddress)
              val connection = checkInternetConnectionUseCase()
-             if (oldAddress == newAddress)
-                 Resource.Error(context.getString(R.string.There_is_no_changes))
-             else if (connection)
+
+             if (connection)
                  Resource.Success(context.getString(R.string.update_successfully))
              else
                  Resource.Success(context.getString(R.string.save_changes_no_internet))

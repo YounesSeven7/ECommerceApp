@@ -1,7 +1,7 @@
 package com.example.ecommerce_app.feature_shopping.domain.use_case.product
 
 import com.example.ecommerce_app.core.domain.util.Resource
-import com.example.ecommerce_app.feature_shopping.data.ProductsApi
+import com.example.ecommerce_app.feature_shopping.data.remote_data.ProductsApi
 import com.example.ecommerce_app.feature_shopping.data.model.Category
 import javax.inject.Inject
 

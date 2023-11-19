@@ -5,7 +5,7 @@ import com.example.ecommerce_app.core.domain.repository.UserRepository
 
 import javax.inject.Inject
 
-class AddUserToFirestoreUseCase @Inject constructor(
+class AddUserUseCase @Inject constructor(
     private val userRepository: UserRepository
 ) {
     operator fun invoke(user: User) = userRepository.addUser(user)

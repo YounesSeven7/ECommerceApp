@@ -2,7 +2,7 @@ package com.example.ecommerce_app.dagger
 
 import android.app.Application
 import coil.ImageLoader
-import com.example.ecommerce_app.feature_shopping.data.ProductsApi
+import com.example.ecommerce_app.feature_shopping.data.remote_data.ProductsApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

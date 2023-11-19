@@ -17,6 +17,7 @@ import com.example.ecommerce_app.feature_shopping.data.model.Category
 import com.example.ecommerce_app.feature_shopping.presentation.adapters.viewPager.CategoryViewPagerAdapter
 import com.example.ecommerce_app.feature_shopping.presentation.shopping.home.category.CategoryFragment
 import com.example.ecommerce_app.feature_shopping.presentation.showAlongSnackbarAboveBottomNav
+import com.example.ecommerce_app.feature_shopping.presentation.showBottomNavigation
 
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
@@ -39,7 +40,6 @@ class HomeFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         binding.tvSearch.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_searchFragment)
         }
@@ -47,8 +47,7 @@ class HomeFragment: Fragment() {
         lifecycleScope.apply {
             launch { viewModel.getAllCategoriesState.collect{ handleGetAllCategoriesState(it) } }
 
-            if (!viewModel.doWeHaveCategories)
-                launch { viewModel.getAllCategories() }
+            launch { viewModel.getAllCategories() }
         }
 
     }

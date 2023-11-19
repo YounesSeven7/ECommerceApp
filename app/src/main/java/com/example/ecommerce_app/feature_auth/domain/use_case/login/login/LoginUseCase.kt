@@ -1,4 +1,4 @@
-package com.example.ecommerce_app.feature_auth.domain.use_case.login
+package com.example.ecommerce_app.feature_auth.domain.use_case.login.login
 
 import android.app.Application
 import com.example.ecommerce_app.R
