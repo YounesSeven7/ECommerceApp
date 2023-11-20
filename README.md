@@ -8,7 +8,7 @@ Welcome to the E-Commerce App project, a simple application that brings the expe
   - User authentication system with login, registration, and password reset.
 
 - **Product Section:**
-  - **Home Screen:** Displays products and categories, allows viewing product details, and adding items to the cart.
+  - **Home Screen:** Displays products and categories, allows viewing product details and adds items to the cart.
   - **Search Screen:** Enables users to search for products.
   - **Cart Screen:** Shows the cart with the ability to modify items and place orders with addresses.
   - **Profile Screen:** Displays user data, order state, addresses, language preferences, and allows users to modify their information and log out.
@@ -42,4 +42,5 @@ The design inspiration for this project comes from [Kleine](https://github.com/m
 
 ### Project Status
 
-This project is currently completed, with future updates planned to incorporate new features and improvements.\ We appreciate your interest and welcome any contributions.
+This project is currently completed, with future updates planned to incorporate new features and improvements.\
+We appreciate your interest and welcome any contributions.
