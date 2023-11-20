@@ -16,6 +16,8 @@ import com.example.ecommerce_app.core.presentation.showThisView
 import com.example.ecommerce_app.databinding.FragmentAllOrdersBinding
 import com.example.ecommerce_app.feature_shopping.data.model.Order
 import com.example.ecommerce_app.feature_shopping.presentation.adapters.recyclerView.OrderAdapter
+import com.example.ecommerce_app.feature_shopping.presentation.hideBottomNavigation
+import com.example.ecommerce_app.feature_shopping.presentation.showBottomNavigation
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -47,6 +49,7 @@ class AllOrdersFragment: Fragment() {
     }
 
     private fun FragmentAllOrdersBinding.makeScreenReady() {
+        hideBottomNavigation()
         setupAllOrdersRv()
         setupButtons()
     }
@@ -95,6 +98,12 @@ class AllOrdersFragment: Fragment() {
     private fun handleErrorGetAllOrdersState(message: String) {
         hideThisView(binding.progressbarAllOrders)
         showAlongSnackbar(requireView(), message)
+    }
+
+
+    override fun onDestroy() {
+        super.onDestroy()
+        showBottomNavigation()
     }
 
 }

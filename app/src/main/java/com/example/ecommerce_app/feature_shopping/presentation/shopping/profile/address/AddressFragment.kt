@@ -19,6 +19,7 @@ import com.example.ecommerce_app.feature_auth.presentation.utile.setErrorMessage
 import com.example.ecommerce_app.feature_shopping.data.model.Address
 import com.example.ecommerce_app.feature_shopping.domain.util.AddressFields
 import com.example.ecommerce_app.feature_shopping.presentation.hideBottomNavigation
+import com.example.ecommerce_app.feature_shopping.presentation.showBottomNavigation
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -174,6 +175,11 @@ class AddressFragment: Fragment() {
 
 
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        showBottomNavigation()
     }
 
 }

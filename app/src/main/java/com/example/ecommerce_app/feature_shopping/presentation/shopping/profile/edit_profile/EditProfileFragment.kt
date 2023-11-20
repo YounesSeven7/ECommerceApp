@@ -23,6 +23,7 @@ import com.example.ecommerce_app.feature_auth.presentation.utile.setErrorMessage
 import com.example.ecommerce_app.feature_shopping.domain.util.EditProfileFields
 import com.example.ecommerce_app.feature_shopping.domain.util.getImageRequest
 import com.example.ecommerce_app.feature_shopping.presentation.hideBottomNavigation
+import com.example.ecommerce_app.feature_shopping.presentation.showBottomNavigation
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -142,6 +143,11 @@ class EditProfileFragment: Fragment() {
             else if (!editProfileFields.lastName.validation)
                 setErrorMessageOnEditText(edLastName, editProfileFields.lastName.message)
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        showBottomNavigation()
     }
 
 

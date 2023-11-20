@@ -20,6 +20,8 @@ import com.example.ecommerce_app.databinding.FragmentDetailsBinding
 import com.example.ecommerce_app.feature_shopping.data.model.CartProduct
 import com.example.ecommerce_app.feature_shopping.data.model.Product
 import com.example.ecommerce_app.feature_shopping.presentation.adapters.viewPager.ImageViewPagerAdapter
+import com.example.ecommerce_app.feature_shopping.presentation.hideBottomNavigation
+import com.example.ecommerce_app.feature_shopping.presentation.showBottomNavigation
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
@@ -59,6 +61,7 @@ class DetailsFragment: Fragment() {
 
     @SuppressLint("SetTextI18n")
     private fun FragmentDetailsBinding.makeScreenReady(product: Product) {
+        hideBottomNavigation()
         tvProductName.text = product.title
         tvProductPrice.text = "$${product.price}"
         tvProductDescription.text = product.description
@@ -135,9 +138,10 @@ class DetailsFragment: Fragment() {
     }
 
 
-
-
-
+    override fun onDestroy() {
+        super.onDestroy()
+        showBottomNavigation()
+    }
 
 
 

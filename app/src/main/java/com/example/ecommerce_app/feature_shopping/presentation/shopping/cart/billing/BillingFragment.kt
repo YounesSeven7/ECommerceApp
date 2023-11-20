@@ -25,6 +25,8 @@ import com.example.ecommerce_app.feature_shopping.data.model.Address
 import com.example.ecommerce_app.feature_shopping.data.model.Order
 import com.example.ecommerce_app.feature_shopping.presentation.adapters.recyclerView.AddressAdapter
 import com.example.ecommerce_app.feature_shopping.presentation.adapters.recyclerView.BillingProductAdapter
+import com.example.ecommerce_app.feature_shopping.presentation.hideBottomNavigation
+import com.example.ecommerce_app.feature_shopping.presentation.showBottomNavigation
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -65,6 +67,7 @@ class BillingFragment : Fragment() {
 
     @SuppressLint("SetTextI18n")
     private fun FragmentBillingBinding.makeScreenReady() {
+        hideBottomNavigation()
         setupAddressRv()
         setButtons()
         if (args.payment != null){
@@ -179,6 +182,11 @@ class BillingFragment : Fragment() {
             hideThisView(binding.tvSelectAddressError)
         else
             showThisView(binding.tvSelectAddressError)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        showBottomNavigation()
     }
 
 

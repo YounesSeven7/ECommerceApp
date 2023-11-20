@@ -99,7 +99,8 @@
     <fragment
         android:id="@+id/orderDetailsFragment"
         android:name="com.example.ecommerce_app.feature_shopping.presentation.shopping.profile.order_details.OrderDetailsFragment"
-        android:label="OrderDetailsFragment" >
+        android:label="OrderDetailsFragment"
+        tools:layout="@layout/fragment_order_details">
         <argument
             android:name="order"
             app:argType="com.example.ecommerce_app.feature_shopping.data.model.Order" />

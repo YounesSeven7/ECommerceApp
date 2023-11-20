@@ -75,7 +75,6 @@ class CategoryFragment: Fragment() {
     }
 
     private fun FragmentHomeCategoryBinding.makeScreenReady() {
-        showBottomNavigation()
         productAdapter = ProductAdapter(imageLoader){ startDetailsFragment(it) }
         val gridLayoutManager = GridLayoutManager(requireContext(), 2)
         rvProducts.apply {
@@ -108,7 +107,6 @@ class CategoryFragment: Fragment() {
     private fun startDetailsFragment(product: Product) {
         val direction = HomeFragmentDirections.actionHomeFragmentToDetailsFragment(product)
         findNavController().navigate(direction)
-        hideBottomNavigation()
     }
 
     private fun handleGetProductsState(getProductsState: Resource<List<Product>>) {

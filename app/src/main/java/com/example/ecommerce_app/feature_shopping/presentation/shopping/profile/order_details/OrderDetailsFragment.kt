@@ -15,6 +15,8 @@ import com.example.ecommerce_app.feature_shopping.data.model.Address
 import com.example.ecommerce_app.feature_shopping.data.model.CartProduct
 import com.example.ecommerce_app.feature_shopping.data.model.OrderStatus
 import com.example.ecommerce_app.feature_shopping.presentation.adapters.recyclerView.BillingProductAdapter
+import com.example.ecommerce_app.feature_shopping.presentation.hideBottomNavigation
+import com.example.ecommerce_app.feature_shopping.presentation.showBottomNavigation
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -40,6 +42,7 @@ class OrderDetailsFragment: Fragment() {
     }
 
     private fun FragmentOrderDetailsBinding.makeScreenReady() {
+        hideBottomNavigation()
         args.order.apply {
             setupOrderStep(orderStatus)
             setupAddress(address)
@@ -84,5 +87,10 @@ class OrderDetailsFragment: Fragment() {
     @SuppressLint("SetTextI18n")
     private fun FragmentOrderDetailsBinding.setupTotalPrice(totalPrice: Int) {
         tvTotalprice.text = "$$totalPrice"
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        showBottomNavigation()
     }
 }

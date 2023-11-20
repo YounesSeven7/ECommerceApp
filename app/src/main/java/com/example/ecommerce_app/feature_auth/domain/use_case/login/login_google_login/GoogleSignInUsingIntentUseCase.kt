@@ -22,19 +22,22 @@ class GoogleSignInUsingIntentUseCase @Inject constructor(
         val googleCredentials = GoogleAuthProvider.getCredential(googleIdToken, null)
         return try {
             val firebaseUser = auth.signInWithCredential(googleCredentials).await().user
-            val user = getUserFormFireBaseUser(firebaseUser)
-            addUserUseCase(user)
+            firebaseUser?.let {
+                val user = getUserFormFireBaseUser(firebaseUser)
+                addUserUseCase(user)
+            }
+
             Resource.Success(Unit)
         } catch (e: Exception) {
             Resource.Error(e.message.toString())
         }
     }
 
-    private fun getUserFormFireBaseUser(firebaseUser: FirebaseUser?) = User(
-        firstName = firebaseUser.toString(),
+    private fun getUserFormFireBaseUser(firebaseUser: FirebaseUser) = User(
+        firstName = firebaseUser.displayName.toString(),
         lastName = "",
-        email = firebaseUser.toString(),
-        imageUrl = firebaseUser.toString()
+        email = firebaseUser.email.toString(),
+        imageUrl = firebaseUser.photoUrl.toString()
     )
 
 }

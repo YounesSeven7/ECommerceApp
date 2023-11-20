@@ -73,7 +73,6 @@ class CartFragment: Fragment() {
 
 
     private fun FragmentCartBinding.makeScreenReady() {
-        showBottomNavigation()
         setupCartProductRv()
         setupBtn()
     }
