@@ -42,4 +42,4 @@ The design inspiration for this project comes from [Kleine](https://github.com/m
 
 ### Project Status
 
-This project is currently completed, with future updates planned to incorporate new features and improvements. We appreciate your interest and welcome any contributions.
+This project is currently completed, with future updates planned to incorporate new features and improvements.\ We appreciate your interest and welcome any contributions.
