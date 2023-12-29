@@ -1,5 +1,5 @@
 <div align="center">  
-  <img src="https://github.com/YounesSeven7/ECommerceApp/issues/1#issue-2059281735" alt="Weather" style="width: 100px; height: 100px; object-fit: contain; margin-right: 10px;">  
+  <img src="https://i.imgur.com/2ALuxdV.png" alt="Weather" style="width: 100px; height: 100px; object-fit: contain; margin-right: 10px;">  
  <h1 style="display: inline-block; margin: 0; vertical-align: middle;">E-Commerce App</h1>  
 </div>  
 
@@ -11,7 +11,7 @@ Welcome to the E-Commerce App project, a simple application that brings the expe
   - User authentication system with login, registration, and password reset.
 
 - **Product Section:**
-  - **Home Screen:** Displays products and categories, allows viewing product details and adds items to the cart.
+  - **Home Screen:** Displays products and categories, allows viewing product details, and adds items to the cart.
   - **Search Screen:** Enables users to search for products.
   - **Cart Screen:** Shows the cart with the ability to modify items and place orders with addresses.
   - **Profile Screen:** Displays user data, order state, addresses, language preferences, and allows users to modify their information and log out.
