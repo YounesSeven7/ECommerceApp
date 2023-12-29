@@ -1,4 +1,7 @@
-## E-Commerce App Project
+<div align="center">  
+  <img src="E-Commerce App" alt="Weather" style="width: 100px; height: 100px; object-fit: contain; margin-right: 10px;">  
+ <h1 style="display: inline-block; margin: 0; vertical-align: middle;">Clock</h1>  
+</div>  
 
 Welcome to the E-Commerce App project, a simple application that brings the experience of online shopping to life. Whether you're exploring product categories or managing your cart, this app has you covered.
 
