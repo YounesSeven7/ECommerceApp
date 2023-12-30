@@ -5,6 +5,18 @@
 
 Welcome to the E-Commerce App project, a simple application that brings the experience of online shopping to life. Whether you're exploring product categories or managing your cart, this app has you covered.
 
+## Screenshots
+<div style="display:flex; flex-wrap:wrap;">
+  <img src="https://i.imgur.com/d0FU54G.gif" style="flex:1; margin:5px;" height="450">
+  <img src="https://i.imgur.com/oifDoOU.gif" style="flex:1; margin:5px;" height="450">
+  <img src="https://i.imgur.com/tkTTM8a.gif" style="flex:1; margin:5px;" height="450">
+  <img src="https://i.imgur.com/fDVdiM3.gif" style="flex:1; margin:5px;" height="450">
+  <img src="https://i.imgur.com/fDVdiM3.gif" style="flex:1; margin:5px;" height="450">
+  <img src="https://i.imgur.com/dCKSdOt.gif" style="flex:1; margin:5px;" height="450">
+  <img src="https://i.imgur.com/mOZC2ZP.gif" style="flex:1; margin:5px;" height="450">
+   <img src="https://i.imgur.com/kQPPSA5.gif" style="flex:1; margin:5px;" height="450">
+</div>
+
 ### Key Features
 
 - **Authentication:**
