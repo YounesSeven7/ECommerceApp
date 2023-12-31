@@ -3,7 +3,7 @@
  <h1 style="display: inline-block; margin: 0; vertical-align: middle;">E-Commerce App</h1>  
 </div>  
 
-Welcome to the E-Commerce App project, a simple application that brings the experience of online shopping to life. Whether you're exploring product categories or managing your cart, this app has you covered.
+Welcome to the E-Commerce App project, Our app lets you discover cool stuff, add it to your cart, and checkout in a flash. Keep track of orders, update your info, and explore with ease. It's safe, simple, and gets better every day!  Built with secure login, clear browsing, cart control, and user profiles.
 
 **APK:** https://files.fm/f/ny5cf2buw8
 
